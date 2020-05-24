@@ -6,6 +6,6 @@ app.use(express.urlencoded({
     extended: true
 }));
 
-//app.use(require('./controllers/'));
+app.use(require('./controllers/auth.crtl.js'));
 
 module.exports = app;
