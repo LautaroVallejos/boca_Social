@@ -4,4 +4,4 @@ WORKDIR /src
 ADD /code/package.json /src/package.json
 COPY /code/ /src/
 EXPOSE 80
-CMD node index.js
+CMD npm install && node index.js
