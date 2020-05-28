@@ -1,7 +1,15 @@
-FROM node:14.3
+FROM node:13.14.0-alpine3.10
+
+#create app directory
 RUN mkdir /src
 WORKDIR /src
-ADD /code/package.json /src/package.json
+
+#app source
 COPY /code/ /src/
-EXPOSE 80
-CMD node index.js
+
+#install app dependencies
+RUN npm install 
+
+
+EXPOSE 3000
+CMD npm run start
