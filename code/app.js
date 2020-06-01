@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const morgan = require('morgan')
 const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
 const rateLimit = require("express-rate-limit");
@@ -17,7 +18,7 @@ app.use(mongoSanitize({
 app.set('trust proxy', 1);
 app.use(limiter);
 
-
+app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({
     extended: true

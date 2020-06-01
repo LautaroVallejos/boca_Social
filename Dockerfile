@@ -10,6 +10,4 @@ COPY /code/ /src/
 #install app dependencies
 RUN npm install 
 
-
-EXPOSE 3000
 CMD npm run start
