@@ -1,8 +1,13 @@
-module.exports = (req, res, next)=>{
+const jwt = require('jsonwebtoken');
+
+const config = require('../utils/config');
+const User = require('../models/User');
+
+module.exports = async (req, res, next)=>{
     try {
         const token = req.headers['x-access-token'];
         if (!token) {
-            return res.status(401).end(JSON.stringify({
+            return res.status(500).end(JSON.stringify({
                 auth: false,
                 token: null,
                 error: true,
@@ -16,7 +21,7 @@ module.exports = (req, res, next)=>{
             password: 0
         });
         if (!user) {
-            return res.status(404).end(JSON.stringify({
+            return res.status(500).end(JSON.stringify({
                 auth: false,
                 token: null,
                 error: true,
@@ -26,7 +31,7 @@ module.exports = (req, res, next)=>{
         req.user = user;
         next();
     } catch (e) {
-        return res.status(401).end(JSON.stringify({
+        return res.status(500).end(JSON.stringify({
             auth: false,
             token: null,
             error: true,

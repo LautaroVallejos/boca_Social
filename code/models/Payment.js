@@ -3,7 +3,7 @@ const {
     model
 } = require('mongoose');
 
-const logSchema = new Schema({
+const Payment = new Schema({
     owner: String,
     date: {
         type: Date,
@@ -15,4 +15,4 @@ const logSchema = new Schema({
     context: String
 })
 
-module.exports = model('Logs', logSchema);
+module.exports = model('Payment', Payment);
