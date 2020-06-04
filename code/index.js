@@ -1,5 +1,5 @@
-const app = require("./app");
-require('./database');
+const app = require("./utils/app");
+require('./utils/database');
 
 async function init(){
     try{
